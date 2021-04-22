@@ -1,6 +1,5 @@
 package com.marcosaos.contas.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,12 @@ public class CategoriaResource {
 	
 	@Autowired
 	private CategoriaService service;
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public List<Categoria> listar() {
+		List<Categoria> lista = service.listar();
+		return lista;
+	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
